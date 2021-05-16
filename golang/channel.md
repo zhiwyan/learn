@@ -38,9 +38,9 @@ make函数在创建channel的时候会在该进程的heap区申请一块内存�
 
 向channel发送数据和从channel接收数据主要涉及hchan里的4个成员变量，buf、sendx、recvx、lock。
 
-- 初始的时候hcan结构体重的buf为空，sendx和recvx都为0，
-- 当向channel中发送数据的时候，首先会对buf加锁，然后将要发送的数据copy到buf里，并增加sendx的值，然后释放buf的锁。
-- 从channel中取数据的时候，也首先会锁，然后将buf里的数据copy到变量对应的内存中，增加recvx的值，最后释放锁。
+- 初始的时候hcan结构体中的buf为空，sendx和recvx都为0，
+- 当向channel中发送数据的时候，首先会加锁，然后将要发送的数据copy到buf里，并增加sendx的值，然后释放buf的锁。
+- 从channel中取数据的时候，也首先会加锁，然后将buf里的数据copy到变量对应的内存中，增加recvx的值，最后释放锁。
 
 ### 写入满channel的场景
 
