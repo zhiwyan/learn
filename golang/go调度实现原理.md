@@ -1,4 +1,4 @@
-## goroutine原理及GPM调度模型
+## go调度实现原理
 
 ### GPM架构图
 
